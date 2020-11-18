@@ -1,8 +1,17 @@
-console.log("Hello");
+const http = require('http');
 
-const resualt= require('./resualt')
+const server = http.createServer((req,res )=>{
+    res.end('hello in first app')
+});
 
-resualt.add(2,3)
-resualt.squre(6)
+server.listen(3000 , '127.0.0.1',()=>{
+    console.log('server runing...')
+})
 
-console.log(resualt.pi);
+
+
+
+
+
+
+

@@ -1,6 +1,8 @@
 console.log("Hello");
 
-const result=require('./result')
-result.add(2.3)
-result.squre(6)
+const resualt= require('./resualt')
 
+resualt.add(2,3)
+resualt.squre(6)
+
+console.log(resualt.pi);

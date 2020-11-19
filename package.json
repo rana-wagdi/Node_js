@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/rana2020701/node_js/issues"
   },
-  "homepage": "https://github.com/rana2020701/node_js#readme"
+  "homepage": "https://github.com/rana2020701/node_js#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }

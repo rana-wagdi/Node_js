@@ -19,9 +19,19 @@ function processRequest(response){
     })
 }
 
-makeRequest('Google').then(response=>{
+makeRequest('Facebook').then(response=>{
     console.log('Response Received')
     return processRequest(response)
-}).then(processedRequest => {
-    console.log(processedRequest)
+}).then(processedResponse => {
+    console.log(processedResponse)
+}).catch(err => {
+    console.log(err)
 })
+
+async function dowork() {
+ const response= await  makeRequest('Google')
+ console.log('Response Received')
+const processedResponse= await processRequest(response)
+console.log(processedResponse)
+}
+dowork()

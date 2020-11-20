@@ -30,3 +30,9 @@ function listening(){
     // console.log(server);
     console.log(`running on localhost: ${port}`);
 };
+const data = [];
+app.post('/flavor', addFlavor);
+
+function addFlavor (req, res) {
+  data.push(req.body);
+};

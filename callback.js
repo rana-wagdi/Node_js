@@ -14,12 +14,23 @@ function getPosts(){
 },1000);
 }
 
-function creatPost(post,callback){
-    setTimeout(()=>{
-        posts.push(post);
-        callback();
+function createPost(post){
+    return new Promise ((resolve,reject)=>{
+        setTimeout(()=>{
+            posts.push(post);
+
+            const error=false;
+
+            if(!error){
+                resolve()
+            }else{
+                reject('Error:Something went wrong');
+            }
+    })
 
     },2000);
 }
-creatPost({title:'Post three',
-            body:'this is post three'},getPosts);
+createPost({title:'Post three',
+            body:'this is post three'
+        })
+        .then(getPosts);

@@ -1,45 +1,30 @@
-const posts=[
-    {title: 'Post one',
-    body:'This is post one'},
-    {title:'Post Two',
-    body:'This is post two'}
-];
-function getPosts(){
-    setTimeout(()=>{
-        let output='';
-        posts.forEach((post,index)=>{
-        output += `<li>${post.title}</li>`;
-    });
-    document.body.innerHTML=output;
-},1000);
+document.getElementById('generate').addEventListener('click', performAction);
+
+function performAction(e){
+  const newAnimal =  document.getElementById('animal').value;
+  const favFact =  document.getElementById('favorite').value;
+
+  getAnimal('/animalData',)
+  // New Syntax!
+  .then(function(data){
+    // Add data
+    console.log(data);
+    postData('/addAnimal', {animal:data.animal, fact: data.fact, fav:favFact} );
+  })
+  .then(
+    updateUI()
+  )
 }
 
-function createPost(post){
-    return new Promise ((resolve,reject)=>{
-        setTimeout(()=>{
-            posts.push(post);
+const updateUI = async () => {
+  const request = await fetch('/all');
+  try{
+    const allData = await request.json();
+    document.getElementById('animalName').innerHTML = allData[0].animal;
+    document.getElementById('animalFact').innerHTML = allData[0].facts;
+    document.getElementById('animalFav').innerHTML = allData[0].fav;
 
-            const error=false;
-
-            if(!error){
-                resolve()
-            }else{
-                reject('Error:Something went wrong');
-            }
-    })
-
-    },2000);
+  }catch(error){
+    console.log("error", error);
+  }
 }
-//createPost({title:'Post three',
-     //       body:'this is post three'
-     //   })
-      //  .then(getPosts)
-      //  .catch(err => console.log(err));
-async function init(){
-    await createPost({title:'Post three',         
-     body:'this is post three'
-       })
-
-       getPosts();
-}
-init();

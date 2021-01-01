@@ -10,5 +10,7 @@ router.get('/info/:id',(req,res,next)=>{
   console.log(req.params.id);
   res.render('info')
 })
-
+router.post('/info',(req , res ,next)=>{
+console.log(req.body);
+})
 module.exports = router;

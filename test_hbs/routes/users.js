@@ -8,9 +8,9 @@ router.get('/', function(req, res, next) {
 
 router.get('/info/:id',(req,res,next)=>{
   console.log(req.params.id);
-  res.render('info')
+  res.render('info',{id : req.params.id})
 })
 router.post('/info',(req , res ,next)=>{
-console.log(req.body.id);
+res.redirect('info/'+req.body.id)
 })
 module.exports = router;

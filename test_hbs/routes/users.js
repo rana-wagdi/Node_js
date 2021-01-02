@@ -11,6 +11,7 @@ router.get('/info/:id',(req,res,next)=>{
   res.render('info',{id : req.params.id})
 })
 router.post('/info',(req , res ,next)=>{
+  req.check('id','invalidID').not().isEmpty();
 res.redirect('info/'+req.body.id)
 })
 module.exports = router;

@@ -6,7 +6,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-
+var items = ["food", "watch tv", "cooking"]
 app.set('view engine', 'ejs');
 
 app.get("/", function(req, res){
@@ -19,7 +19,13 @@ app.get("/", function(req, res){
         month: "long"
     }
     var day = today.toLocaleDateString("en-Us", option);
-    res.render("list", {kindOfDay:day} )
+    res.render("list", {kindOfDay:day, nameListItems:items} )
+})
+
+app.post('/', function(req, res){
+    itemName = req.body.itemInput;
+    items.push(itemName);
+    res.redirect('/');
 })
 
 

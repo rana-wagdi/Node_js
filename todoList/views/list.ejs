@@ -9,7 +9,9 @@
 <body>
     <h1><%=kindOfDay%></h1>
     <ul>
-        <li></li>
+     <%   for (var i = 0; i < nameListItems.length; i++){ %>
+            <li><%=nameListItems[i]%></li>
+     <%   } %>
     </ul>
     <form action="/" method="POST">
         <input type="text" name="itemInput">

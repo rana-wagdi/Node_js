@@ -1,7 +1,13 @@
+const bodyParser = require("body-parser");
 const express = require("express");
+
 
 const app = express();
 
+app.use(bodyParser.urlencoded({extended: true}));
+
+
+app.set('view engine', 'ejs');
 
 app.get("/", function(req, res){
 
@@ -13,7 +19,7 @@ app.get("/", function(req, res){
         month: "long"
     }
     var day = today.toLocaleDateString("en-Us", option);
-    res.send("<h1>day</h1>")
+    res.render("list", {kindOfDay:day} )
 })
 
 
